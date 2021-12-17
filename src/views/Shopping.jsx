@@ -1,4 +1,7 @@
 import React, { useReducer } from 'react'
+import AddItem from '../components/AddItem/AddItem';
+import ItemList from '../components/ItemList/ItemList';
+
 
 //initialize items in list
 const initItems = [
@@ -66,7 +69,9 @@ export default function Shopping() {
 
   return (
     <div>
-      
+      <h2>Shopping List</h2>
+      <AddItem handleAddItem={handleAddItem} />
+      <ItemList items={items} handleChangeItem={handleChangeItem} handleDeleteItem={handleDeleteItem} />
     </div>
   )
 }
