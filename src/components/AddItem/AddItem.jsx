@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 export default function AddItem({ handleAddItem }) {
   const [text, setText] = useState('')
@@ -10,7 +10,7 @@ export default function AddItem({ handleAddItem }) {
   }
 
   return (
-    <form onSumbit={handleSumbit} className='add-form'>
+    <form onSubmit={handleSumbit} className='add-form'>
       <input
         className='add-item'
         placeholder='new item'
