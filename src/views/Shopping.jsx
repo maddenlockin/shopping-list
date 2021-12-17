@@ -9,13 +9,14 @@ const initItems = [
   { id: 1, text: 'oat milk', done: false },
   { id: 2, text: 'baking soda', done: false },
   { id: 3, text: 'maple syrup', done: false },
-];
+]
 
 const nextId = 3
 
 //create reducer function
 function itemsReducer(items, action) {
   switch (action.type) {
+    // if adding to list, return all previous list items with new item
     case 'add': {
       return [
         ...items,
@@ -26,11 +27,13 @@ function itemsReducer(items, action) {
         },
       ]
     }
+    // if changing item in list, 
     case 'change': {
       return items.map((item) => {
         if (item.id === action.task.id) {
           return action.task
         }
+        console.log('item', item);
         return item
       })
     }
@@ -54,13 +57,13 @@ export default function Shopping() {
     })
   }
 
-  const handleChangeItem = (text) => {
+  const handleChangeItem = (task) => {
     dispatch({
       type: 'change',
       task
     })
   }
-  const handleDeleteItem = (text) => {
+  const handleDeleteItem = (taskId) => {
     dispatch({
       type: 'delete',
       id: taskId
